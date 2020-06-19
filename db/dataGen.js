@@ -139,7 +139,7 @@ const save = () => {
 
 
 const getAll = (callback) => {
-  Items.find({}, function(err, data) {
+  Item.find({}, function(err, data) {
     if (err) {
       console.log(err);
     } else {
@@ -149,7 +149,7 @@ const getAll = (callback) => {
 };
 
 const findItemById = (id, callback) => {
-  Items.find({_id: id}, function(err, data) {
+  Item.find({_id: id}, function(err, data) {
     if (err) {
       console.log(err);
     } else {
