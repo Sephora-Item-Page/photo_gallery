@@ -4,7 +4,8 @@ const itemSchema = new mongoose.Schema({
   _id: Number,
   itemName: String,
   type: String,
-  photos: [String]
+  lowRes: [String],
+  highRes: [String]
 });
 
 module.exports = { itemSchema };

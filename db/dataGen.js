@@ -13,9 +13,10 @@ const save = () => {
     _id: 100,
     itemName: faker.commerce.productName(),
     type: 'brush',
-    photos: [
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Brushes/brush1.jpg'
-    ]
+    lowRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Brushes/brush1.jpg'
+    ],
+    highRes: ['https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Brushes/brush1.jpg']
   }
 
   //eyelashes will have an id num 200+
@@ -23,56 +24,86 @@ const save = () => {
     _id: 200,
     itemName: faker.commerce.productName(),
     type: 'eyelashes',
-    photos: [
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyelashes/Eyelashes1.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyelashes/Eyelashes2.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyelashes/Eyelashes3.jpg'
+    lowRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyelashes/Eyelashes1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyelashes/Eyelashes2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyelashes/Eyelashes3.jpg'
+    ],
+    highRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyelashes/Eyelashes1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyelashes/Eyelashes2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyelashes/Eyelashes3.jpg'
     ]
   }
 
-    //eyelashes will have an id num 300+
+  //eyeshadow will have an id num 300+
   let eyeshadow = {
     _id: 300,
     itemName: faker.commerce.productName(),
     type: 'eyeshadow',
-    photos: [
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyes/Eyeshadow1.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyes/Eyeshadow2.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyes/Eyeshadow3.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyes/Eyeshadow4.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyes/Eyeshadow5.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Eyes/Eyeshadow6.jpg'
+    lowRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyes/Eyeshadow1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyes/Eyeshadow2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyes/Eyeshadow3.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyes/Eyeshadow4.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyes/Eyeshadow5.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Eyes/Eyeshadow6.jpg'
+    ],
+    highRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyes/Eyeshadow1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyes/Eyeshadow2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyes/Eyeshadow3.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyes/Eyeshadow4.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyes/Eyeshadow5.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Eyes/Eyeshadow6.jpg'
     ]
   }
 
-    //eyelashes will have an id num 400+
+  //lips will have an id num 400+
   let lips = {
     _id: 400,
     itemName: faker.commerce.productName(),
     type: 'lips',
-    photos: [
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Lips/Lips1.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Lips/Lips2.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Lips/Lips3.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Lips/Lips4.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Lips/Lips5.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Lips/Lips6.jpg'
+    lowRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Lips/Lips1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Lips/Lips2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Lips/Lips3.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Lips/Lips4.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Lips/Lips5.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Lips/Lips6.jpg'
+    ],
+    highRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Lips/Lips1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Lips/Lips2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Lips/Lips3.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Lips/Lips4.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Lips/Lips5.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Lips/Lips6.jpg'
     ]
   }
 
-    //eyelashes will have an id num 500+
+  //nails will have an id num 500+
   let nails = {
     _id: 500,
     itemName: faker.commerce.productName(),
     type: 'nails',
-    photos: [
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Nails/Nails1.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Nails/Nails2.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Nails/Nails3.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Nails/Nails4.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Nails/Nails5.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Nails/Nails6.jpg',
-      'https://sephoraitems.s3-us-west-1.amazonaws.com/Nails/Nails7.jpg'
+    lowRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Nails/Nails1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Nails/Nails2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Nails/Nails3.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Nails/Nails4.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Nails/Nails5.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Nails/Nails6.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/LowRes/Nails/Nails7.jpg'
+    ],
+    highRes: [
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Nails/Nails1.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Nails/Nails2.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Nails/Nails3.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Nails/Nails4.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Nails/Nails5.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Nails/Nails6.jpg',
+      'https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Nails/Nails7.jpg'
     ]
   }
 
