@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
+import MainPhoto from './MainPhoto.jsx';
+
 const PhotoGallery = styled.div`
   outline: 1px dashed black;
   height: 412px;
@@ -44,12 +46,13 @@ class App extends React.Component {
     this.state = {
       photos: [],
       visiblePhotos: [],
-      activeIndex: '',
+      mainPhoto: '',
       currentPicIdx: 0,
       carouselXCoord: 0,
       carouselLength: 0,
       moveForward: true,
       moveBack: false,
+      modal: false
     };
     //bind functions here
     this.getItemPhotos = this.getItemPhotos.bind(this);
@@ -61,7 +64,7 @@ class App extends React.Component {
       .then((response) => {
         //console.log('this is the response data: ', response.data[0].highRes);
         var photoHRArr = response.data[0].highRes;
-        this.setState({photos: photoHRArr, activeIndex: photoHRArr[0]})
+        this.setState({photos: photoHRArr, mainPhoto: photoHRArr[0]})
       })
       .catch((error) => {
         console.log('Failed axios.get Client-Side: ', error);
@@ -79,7 +82,9 @@ class App extends React.Component {
         <div>
           <h1>Hello from React</h1>
           <PhotoGallery>
-            <ActivePhoto>Active Photo</ActivePhoto>
+            <ActivePhoto>
+              <MainPhoto mainPhoto={this.state.mainPhoto} />
+            </ActivePhoto>
             <StaticText>Roll over or click image to zoom in</StaticText>
             <Carousel>Carousel</Carousel>
           </PhotoGallery>
