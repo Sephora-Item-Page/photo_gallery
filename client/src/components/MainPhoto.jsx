@@ -5,11 +5,15 @@ const Container = styled.div`
 `;
 
 const ActiveImage = styled.img`
-  height: 300px;
-  width: 300px
-  display: block;
-  position: relative;
-`;
+  max-height: 300px;
+  max-width: 300px
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin: auto;
+  `;
+
 
 const MainPhoto = (props) => {
   return (
