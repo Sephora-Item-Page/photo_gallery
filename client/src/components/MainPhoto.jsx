@@ -1,25 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-`;
 
 const ActiveImage = styled.img`
-  max-height: 300px;
-  max-width: 300px
+  height: 300px;
+  width: 300px;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  margin: auto;
   `;
+  // margin: auto;
 
 
 const MainPhoto = (props) => {
+  var photo;
+  if (props.tempMainPhoto !== '') {
+    var photo = props.tempMainPhoto;
+  } else {
+    var photo = props.mainPhoto;
+  }
   return (
-    <Container>
-      <ActiveImage src={props.mainPhoto} />
-    </Container>
+    // <Container>
+      <ActiveImage src={photo} onClick={props.openModal}/>
+    // </Container>
   )
 }
 
