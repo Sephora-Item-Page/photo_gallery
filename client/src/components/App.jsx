@@ -86,7 +86,7 @@ class App extends React.Component {
   }
 
   getItemPhotos() {
-    axios.get('/items/512')
+    axios.get('/items/312')
       .then((response) => {
         var photoHRArr = response.data[0].highRes;
         var photoLRArr = response.data[0].lowRes;
