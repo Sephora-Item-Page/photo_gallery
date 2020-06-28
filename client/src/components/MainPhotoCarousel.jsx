@@ -12,7 +12,7 @@ const CarouselContainer = styled.div`
   justify-content: flex-start;
   align-items: relative;
   overflow: hidden;
-`;
+  `;
 
 const CarouselTrack = styled.div`
   height: 300px;
@@ -34,6 +34,7 @@ const MainPhotoCarousel = (props) => (
           photo={photo}
           mainPhoto={props.mainPhoto}
           tempMainPhoto={props.tempMainPhoto}
+          openModal={props.openModal}
           key={photo}
         />
       )}

@@ -64,12 +64,13 @@ class App extends React.Component {
       thumbnails: [],
       mainPhoto: '',
       tempMainPhoto: '',
+      itemTitle: '',
       pageNum: 0,
       slideNum: 0,
       carouselLength: 0,
       clickedId: 0,
       moveForward: true,
-      moveBack: false,
+      moveBack: true,
       modalOpen: false,
     };
 
@@ -85,7 +86,7 @@ class App extends React.Component {
   }
 
   getItemPhotos() {
-    axios.get('/items/315')
+    axios.get('/items/512')
       .then((response) => {
         var photoHRArr = response.data[0].highRes;
         var photoLRArr = response.data[0].lowRes;
@@ -93,6 +94,7 @@ class App extends React.Component {
           photos: photoHRArr,
           thumbnails: photoLRArr,
           mainPhoto: photoHRArr[0],
+          itemTitle: response.data[0].itemName,
           carouselLength: photoHRArr.length,
         })
       })
@@ -130,20 +132,19 @@ class App extends React.Component {
       this.setState({
         pageNum: newPageNum,
       });
-    } else if (this.state.pageNum === 0) {
-      this.setState({
-        moveBack: false
-      });
     }
+    console.log('back clicked');
   }
 
   moveForwardFunc() {
-    if (this.state.pageNum * 3 < this.state.carouselLength) {
+    var pageMax = Math.ceil(this.state.carouselLength / 3);
+    if (this.state.pageNum < pageMax - 1) {
       var newPageNum = this.state.pageNum + 1;
       this.setState({
         pageNum: newPageNum,
       });
     }
+    console.log("locled");
   }
 
   openModal() {
@@ -205,9 +206,16 @@ class App extends React.Component {
 
             {this.state.modalOpen ? (
               <Modal
+                photos={this.state.photos}
+                thumbnails={this.state.thumbnails}
                 mainPhoto={this.state.mainPhoto}
                 tempMainPhoto={this.state.tempMainPhoto}
-                photos={this.state.thumbnails}
+                itemTitle={this.state.itemTitle}
+                slideNum={this.state.slideNum}
+                carouselLength={this.state.carouselLength}
+                clickedId={this.state.clickedId}
+                moveForward={this.state.moveForward}
+                moveBack={this.state.moveBack}
                 handleOnHover={this.handleOnHover}
                 handleOffHover={this.handleOffHover}
                 changeMainPhoto={this.changeMainPhoto}

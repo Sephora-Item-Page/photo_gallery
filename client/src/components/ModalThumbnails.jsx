@@ -1,7 +1,7 @@
 import React from 'react';
-import CarouselPhoto from './CarouselPhoto.jsx';
 import styled from 'styled-components';
 
+import CarouselPhoto from './CarouselPhoto.jsx';
 
 const CarouselContainer = styled.div`
   height: 53px;
@@ -14,35 +14,26 @@ const CarouselContainer = styled.div`
   `;
 
 
-const ModalThumbnails = React.forwardRef((props, ref) => (
-  <CarouselContainer ref={ref}>
+const ModalThumbnails = (props) => (
+  <CarouselContainer>
 
-    {props.photos.map(photo =>
+    {props.thumbnails.map((photo, index) =>
       <CarouselPhoto
         photo={photo}
+        id={index}
         mainPhoto={props.mainPhoto}
         mainPhotoEqualsThumbnail={props.mainPhoto === photo}
         changeMainPhoto={props.changeMainPhoto}
         handleOnHover={props.handleOnHover}
         handleOffHover={props.handleOffHover}
+        clickedId={props.clickedId}
         key={photo}
       />
     )}
 
   </CarouselContainer>
 
-))
+)
 
-// class Carousel extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       photos: props.photos,
-//       photoPos: 252,
-//       size: 252
-//     };
-
-//   }
-// }
 
 export default ModalThumbnails;

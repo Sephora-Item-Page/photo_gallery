@@ -10,8 +10,6 @@ const ActiveImage = styled.img`
   align-items: center;
   justify-content: center;
   `;
-  // margin: auto;
-
 
 const MainPhoto = (props) => {
   var photo;
@@ -21,9 +19,7 @@ const MainPhoto = (props) => {
     var photo = props.mainPhoto;
   }
   return (
-    // <Container>
       <ActiveImage src={photo} onClick={props.openModal}/>
-    // </Container>
   )
 }
 
