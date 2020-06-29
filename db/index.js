@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/sephora', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/sephoraPG', {useNewUrlParser: true, useUnifiedTopology: true });
 
 var db = mongoose.connection;
 db.on('error', function() {

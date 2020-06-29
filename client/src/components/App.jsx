@@ -56,7 +56,7 @@ const CarouselContainer = styled.div`
 `;
 
 
-class App extends React.Component {
+class PhotoGalleryApp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -236,4 +236,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default PhotoGalleryApp;
