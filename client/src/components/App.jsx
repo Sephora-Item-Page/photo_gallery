@@ -83,8 +83,20 @@ class App extends React.Component {
 
   }
 
+
   getItemPhotos() {
-    axios.get('/items/512')
+
+    var productId = 0;
+    var getProductId = () => {
+      var typesArr = [100, 200, 300, 400, 500]
+      var type = typesArr[Math.floor(Math.random() * 5)];
+      var id = Math.floor(Math.random() * 20);
+      var productId = (type + id);
+      return productId;
+    }
+    var item = getProductId();
+
+    axios.get(`/items/${item}`)
       .then((response) => {
         var photoHRArr = response.data[0].highRes;
         var photoLRArr = response.data[0].lowRes;
