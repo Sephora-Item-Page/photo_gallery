@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const ActiveImage = styled.img`
-  height: 500px;
-  width: 500px;
-  object-fit: cover;
+  height: 100%;
+  width: 100%;
   display: flex;
   position: relative;
   align-items: center;

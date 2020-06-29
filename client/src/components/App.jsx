@@ -69,8 +69,6 @@ class App extends React.Component {
       slideNum: 0,
       carouselLength: 0,
       clickedId: 0,
-      moveForward: true,
-      moveBack: true,
       modalOpen: false,
     };
 
@@ -86,7 +84,7 @@ class App extends React.Component {
   }
 
   getItemPhotos() {
-    axios.get('/items/312')
+    axios.get('/items/512')
       .then((response) => {
         var photoHRArr = response.data[0].highRes;
         var photoLRArr = response.data[0].lowRes;
@@ -133,7 +131,6 @@ class App extends React.Component {
         pageNum: newPageNum,
       });
     }
-    console.log('back clicked');
   }
 
   moveForwardFunc() {
@@ -144,7 +141,6 @@ class App extends React.Component {
         pageNum: newPageNum,
       });
     }
-    console.log("locled");
   }
 
   openModal() {
@@ -179,7 +175,6 @@ class App extends React.Component {
             <CarouselContainer>
 
               <BackArrow
-                moveBack={this.state.moveBack}
                 moveBackFunc={this.moveBackFunc}
                 pageNum={this.state.pageNum}
               />
@@ -197,9 +192,9 @@ class App extends React.Component {
               />
 
               <ForwardArrow
-                moveForward={this.state.moveForward}
                 moveForwardFunc={this.moveForwardFunc}
                 pageNum={this.state.pageNum}
+                carouselLength={this.state.carouselLength}
               />
 
             </CarouselContainer>

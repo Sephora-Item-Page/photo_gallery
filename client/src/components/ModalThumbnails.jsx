@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import CarouselPhoto from './CarouselPhoto.jsx';
 
-const CarouselContainer = styled.div`
+const ThumbnailContainer = styled.div`
   height: 53px;
   width: 852px;
   display: flex;
@@ -15,7 +15,7 @@ const CarouselContainer = styled.div`
 
 
 const ModalThumbnails = (props) => (
-  <CarouselContainer>
+  <ThumbnailContainer>
 
     {props.thumbnails.map((photo, index) =>
       <CarouselPhoto
@@ -31,7 +31,7 @@ const ModalThumbnails = (props) => (
       />
     )}
 
-  </CarouselContainer>
+  </ThumbnailContainer>
 
 )
 

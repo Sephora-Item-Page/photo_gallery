@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Header from './ModalHeader.jsx';
+import ModalBackArrow from './ModalBackArrow.jsx';
 import ModalCarousel from './ModalCarousel.jsx';
+import ModalForwardArrow from './ModalForwardArrow.jsx';
 import ModalThumbnails from './ModalThumbnails.jsx';
 
 
@@ -25,11 +27,13 @@ const Container = styled.div`
   display: flex;
   background-color: white;
   margin: 7% auto;
-  flex-direction: column;
+  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
   `;
 
-const Carousel = styled.div`
+const Thumbnails = styled.div`
+  border-top: ${(props) => `${(props.border.border)}`};
   height: 53px;
   width: 852px;
   padding-right: 32px;
@@ -39,7 +43,9 @@ const Carousel = styled.div`
   position: relative;
   `;
 
-
+const border = {
+  border: '1px solid rgba(0, 0, 0, 0.063);'
+}
 
 class Modal extends React.Component {
   constructor(props) {
@@ -71,7 +77,6 @@ class Modal extends React.Component {
   }
 
   handleOnHover(event) {
-    console.log('onhover: ', event.target.id);
     this.setState({
       tempSlideNum: event.target.id
     });
@@ -85,20 +90,26 @@ class Modal extends React.Component {
   }
 
   moveBackFunc() {
-    if (this.state.pageNum > 0) {
-      var newPageNum = this.state.pageNum - 1;
+    if (this.state.slideNum > 0) {
+      var newSlideNum = this.state.slideNum - 1;
+      var newClickedId = this.state.clickedId - 1;
       this.setState({
-        pageNum: newPageNum,
+        slideNum: newSlideNum,
+        clickedId: newClickedId,
+        tempSlideNum: newSlideNum
       });
     }
   }
 
   moveForwardFunc() {
-    var pageMax = Math.ceil(this.state.carouselLength / 3);
-    if (this.state.pageNum < pageMax - 1) {
-      var newPageNum = this.state.pageNum + 1;
+    var slideMax = this.state.carouselLength;
+    if (this.state.slideNum < slideMax - 1) {
+      var newSlideNum = this.state.slideNum + 1;
+      var newClickedId = this.state.clickedId + 1;
       this.setState({
-        pageNum: newPageNum,
+        slideNum: newSlideNum,
+        clickedId: newClickedId,
+        tempSlideNum: newSlideNum
       });
     }
   }
@@ -111,12 +122,14 @@ class Modal extends React.Component {
             itemTitle={this.props.itemTitle}
             toggleModal={this.props.toggleModal}
           />
+          <ModalBackArrow slideNum={this.state.slideNum} moveBackFunc={this.moveBackFunc}/>
           <ModalCarousel
             photos={this.state.photos}
             slideNum={this.state.slideNum}
             tempSlideNum={this.state.tempSlideNum}
           />
-          <Carousel>
+          <ModalForwardArrow slideNum={this.state.slideNum} moveForwardFunc={this.moveForwardFunc} slideMax={this.state.carouselLength - 1}/>
+          <Thumbnails border={border}>
             <ModalThumbnails
               thumbnails={this.state.thumbnails}
               handleOnHover={this.handleOnHover}
@@ -124,7 +137,7 @@ class Modal extends React.Component {
               changeMainPhoto={this.changeMainPhoto}
               clickedId={this.state.clickedId}
             />
-          </Carousel>
+          </Thumbnails>
         </Container>
       </Wrapper>
     )

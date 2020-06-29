@@ -3,20 +3,21 @@ import styled from 'styled-components';
 
 import ModalCarouselPhoto from './ModalCarouselPhoto.jsx';
 
+
 const CarouselContainer = styled.div`
-  height: 500px;
-  width: 500px;
-  display: flex;
-  position: relative;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: relative;
-  overflow: hidden;
-  margin-top: 25px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 30px;
-  `;
+height: 500px;
+width: 500px;
+display: flex;
+position: relative;
+flex-direction: row;
+justify-content: flex-start;
+align-items: relative;
+overflow: hidden;
+margin-top: 25px;
+margin-right: auto;
+margin-left: auto;
+margin-bottom: 30px;
+`;
 
 const PhotoTrack = styled.div`
   height: 500px;

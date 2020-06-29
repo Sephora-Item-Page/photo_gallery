@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Header = styled.div`
-  border-bottom: 1px solid lightgray;
+  border-bottom: ${(props) => `${(props.border.border)}`};
   height: 20px;
   width: 916px;
   padding-top: 16px;
@@ -41,8 +41,12 @@ const Svg = styled.svg`
   width: 18px;
 `;
 
+const border = {
+  border: '1px solid rgba(0, 0, 0, 0.063);'
+}
+
 const ModalHeader = (props) => (
-  <Header>
+  <Header border={border}>
     <HeaderText>{props.itemTitle}</HeaderText>
     <Close onClick={() => props.toggleModal()}>
       <Svg transform="rotate(45)">
