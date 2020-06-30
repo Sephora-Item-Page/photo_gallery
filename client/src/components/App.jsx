@@ -96,7 +96,7 @@ class PhotoGalleryApp extends React.Component {
     }
     var item = getProductId();
 
-    axios.get(`/items/${item}`)
+    axios.get(`/photoGallery/items/${item}`)
       .then((response) => {
         var photoHRArr = response.data[0].highRes;
         var photoLRArr = response.data[0].lowRes;

@@ -12,6 +12,7 @@ const { getAll, findItemById } = require('../db/dataGen.js');
 
 // Serve static files. Any requests for specific files will be served if they exist in the provided folder
 app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use('/photoGallery', express.static(path.join(__dirname, '/../client/dist')));
 
 //to parse json data
 app.use(express.json());
@@ -22,9 +23,8 @@ app.get('/items', (req, res) => {
     res.send(data);
   })
 });
-
 //gets single item by id
-app.get('/items/:id', (req, res) => {
+app.get('/photoGallery/items/:id', (req, res) => {
   findItemById(req.params.id, (data) => {
     res.send(data);
   })
