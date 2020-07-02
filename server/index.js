@@ -24,8 +24,8 @@ app.get('/items', (req, res) => {
   })
 });
 //gets single item by id
-app.get('/photoGallery/items/:id', (req, res) => {
-  findItemById(req.params.id, (data) => {
+app.get('/photoGallery/items/:productId', (req, res) => {
+  findItemById(req.params.productId, (data) => {
     res.send(data);
   })
 });

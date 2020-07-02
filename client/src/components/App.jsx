@@ -86,18 +86,11 @@ class PhotoGalleryApp extends React.Component {
 
   getItemPhotos() {
 
-    var productId = 0;
-    var getProductId = () => {
-      var typesArr = [100, 200, 300, 400, 500]
-      var type = typesArr[Math.floor(Math.random() * 5)];
-      var id = Math.floor(Math.random() * 20);
-      var productId = (type + id);
-      return productId;
-    }
-    var item = getProductId();
-
-    axios.get(`/photoGallery/items/${item}`)
+    let path = window.location.pathname;
+    let id = path.split('/').filter(ele => ele !== '').pop();
+    axios.get(`/photoGallery/items/${id}`)
       .then((response) => {
+        console.log('res data: ', response.data);
         var photoHRArr = response.data[0].highRes;
         var photoLRArr = response.data[0].lowRes;
         this.setState({

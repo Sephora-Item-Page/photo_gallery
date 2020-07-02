@@ -10,7 +10,6 @@ const save = () => {
 
   //brushes will have an id num 100+
   let brush = {
-    _id: 100,
     itemName: faker.commerce.productName(),
     type: 'brush',
     lowRes: [
@@ -21,7 +20,6 @@ const save = () => {
 
   //eyelashes will have an id num 200+
   let eyelashes = {
-    _id: 200,
     itemName: faker.commerce.productName(),
     type: 'eyelashes',
     lowRes: [
@@ -38,7 +36,6 @@ const save = () => {
 
   //eyeshadow will have an id num 300+
   let eyeshadow = {
-    _id: 300,
     itemName: faker.commerce.productName(),
     type: 'eyeshadow',
     lowRes: [
@@ -61,7 +58,6 @@ const save = () => {
 
   //lips will have an id num 400+
   let lips = {
-    _id: 400,
     itemName: faker.commerce.productName(),
     type: 'lips',
     lowRes: [
@@ -84,7 +80,6 @@ const save = () => {
 
   //nails will have an id num 500+
   let nails = {
-    _id: 500,
     itemName: faker.commerce.productName(),
     type: 'nails',
     lowRes: [
@@ -107,48 +102,59 @@ const save = () => {
     ]
   }
 
+  let idWithPadding = (id) => {
+    var idStr = id.toString();
+    var paddedId = idStr.padStart(4, '0')
+    return paddedId;
+  }
+
   let seedBrushes = () => {
-    for (var i = 0; i <= 20; i += 1) {
+    for (var i = 1; i < 20; i += 1) {
       let item = new Item(brush);
+      brush.productId = idWithPadding(i);
+      console.log('brush id: ', brush.productId);
       allItemsArr.push(item);
-      brush.itemName = faker.commerce.productName(),
-      brush._id += 1;
+      brush.itemName = faker.commerce.productName();
     }
   }
 
   let seedEyelashes = () => {
-    for (var i = 0; i <= 20; i += 1) {
+    for (var i = 20; i < 40; i += 1) {
       let item = new Item(eyelashes);
+      eyelashes.productId = idWithPadding(i);
+      console.log('eyes id: ', eyelashes.productId);
       allItemsArr.push(item);
-      eyelashes.itemName = faker.commerce.productName(),
-      eyelashes._id += 1;
+      eyelashes.itemName = faker.commerce.productName();
     }
   }
 
   let seedEyeshadow = () => {
-    for (var i = 0; i <= 20; i += 1) {
+    for (var i = 40; i < 60; i += 1) {
       let item = new Item(eyeshadow);
+      eyeshadow.productId = idWithPadding(i);
+      console.log('eyes2 id: ', eyeshadow.productId);
       allItemsArr.push(item);
-      eyeshadow.itemName = faker.commerce.productName(),
-      eyeshadow._id += 1;
+      eyeshadow.itemName = faker.commerce.productName();
     }
   }
 
   let seedLips = () => {
-    for (var i = 0; i <= 20; i += 1) {
+    for (var i = 60; i < 80; i += 1) {
       let item = new Item(lips);
+      lips.productId = idWithPadding(i);
+      console.log('lips id: ', lips.productId);
       allItemsArr.push(item);
-      lips.itemName = faker.commerce.productName(),
-      lips._id += 1;
+      lips.itemName = faker.commerce.productName();
     }
   }
 
   let seedNails = () => {
-    for (var i = 0; i <= 20; i += 1) {
+    for (var i = 80; i <= 101; i += 1) {
       let item = new Item(nails);
+      nails.productId = idWithPadding(i);
+      console.log('nails id: ', nails.productId);
       allItemsArr.push(item);
-      nails.itemName = faker.commerce.productName(),
-      nails._id += 1;
+      nails.itemName = faker.commerce.productName();
     }
   }
 
@@ -180,7 +186,7 @@ const getAll = (callback) => {
 };
 
 const findItemById = (id, callback) => {
-  Item.find({_id: id}, function(err, data) {
+  Item.find({productId: id}, function(err, data) {
     if (err) {
       console.log(err);
     } else {
