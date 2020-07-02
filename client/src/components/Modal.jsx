@@ -26,7 +26,7 @@ const Container = styled.div`
   padding-left: 32px;
   display: flex;
   background-color: white;
-  margin: 7% auto;
+  margin: 40px auto auto auto;
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
