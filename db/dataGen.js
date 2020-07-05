@@ -8,7 +8,6 @@ const Item = mongoose.model('Item', itemSchema);
 const save = () => {
   let allItemsArr = [];
 
-  //brushes will have an id num 100+
   let brush = {
     itemName: faker.commerce.productName(),
     type: 'brush',
@@ -18,7 +17,6 @@ const save = () => {
     highRes: ['https://sephoraitems.s3-us-west-1.amazonaws.com/HighRes/Brushes/brush1.jpg']
   }
 
-  //eyelashes will have an id num 200+
   let eyelashes = {
     itemName: faker.commerce.productName(),
     type: 'eyelashes',
@@ -34,7 +32,6 @@ const save = () => {
     ]
   }
 
-  //eyeshadow will have an id num 300+
   let eyeshadow = {
     itemName: faker.commerce.productName(),
     type: 'eyeshadow',
@@ -56,7 +53,6 @@ const save = () => {
     ]
   }
 
-  //lips will have an id num 400+
   let lips = {
     itemName: faker.commerce.productName(),
     type: 'lips',
@@ -78,7 +74,6 @@ const save = () => {
     ]
   }
 
-  //nails will have an id num 500+
   let nails = {
     itemName: faker.commerce.productName(),
     type: 'nails',
@@ -165,14 +160,40 @@ const save = () => {
   seedLips();
   seedNails();
 
+//THIS IS FOR W/O DOCKER
+//   db.db.dropCollection('items')
+//     .then(() => {
+//     Item.collection.insertMany(allItemsArr)
+//       .then(() => {
+//         console.log('successfully seeded!')
+//       })
+//       .catch(err => {
+//         console.log('seeding error: ', err)
+//       });
+//   })
+//   .then( () => { mongoose.disconnect()} )
+//   .catch(err => {
+//     console.log('closing error: ', err)
+//   });
+// }
+
+
   Item.collection.insertMany(allItemsArr)
     .then(() => {
       console.log('successfully seeded!')
     })
-    .catch(err => {
-      console.log('seeding error: ', err)
-    });
+    // .catch(err => {
+    //   console.log('seeding error: ', err)
+    // })
+  .then(() => { mongoose.disconnect() })
+  .catch(err => {
+    console.log('closing error: ', err)
+  });
+
 }
+
+
+
 
 
 const getAll = (callback) => {

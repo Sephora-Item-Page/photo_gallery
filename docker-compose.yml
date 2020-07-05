@@ -1,0 +1,24 @@
+
+version: '3'
+
+services:
+  photogallery:
+    container_name:
+      photo_gallery_container
+    build: ./
+    depends_on:
+      - 'photogallerydb'
+    ports:
+      - '3003:3003'
+    working_dir: /src/app
+    volumes:
+        - ./:/src/app
+
+
+
+  photogallerydb:
+    image: 'mongo:latest'
+    container_name:
+      photo_gallery_db
+    ports:
+      - "27017:27017"
