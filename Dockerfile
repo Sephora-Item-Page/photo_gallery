@@ -21,7 +21,7 @@ RUN npm install
 EXPOSE 3003
 
 
-RUN npm run seed
+# RUN npm run seed
 
 
 # How do you start your app?

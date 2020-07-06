@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 //THIS IS FOR THE LOCAL APP COMPONENT W/O DOCKER-COMPOSE
-// mongoose.connect('mongodb://172.17.0.2/sephoraPG', {useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://172.17.0.2/sephoraPG', {useNewUrlParser: true, useUnifiedTopology: true });
 
 // //THIS IS FOR THE LOCAL APP COMPONENT W DOCKER-COMPOSE
-mongoose.connect('mongodb://photogallerydb/sephoraPG', {useNewUrlParser: true, useUnifiedTopology: true });
+// mongoose.connect('mongodb://photogallerydb/sephoraPG', {useNewUrlParser: true, useUnifiedTopology: true });
 
 //THIS IS FOR NOT DOCKER
 // mongoose.connect('mongodb://localhost/sephoraPG', {useNewUrlParser: true, useUnifiedTopology: true });
