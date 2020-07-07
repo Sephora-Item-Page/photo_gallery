@@ -7,6 +7,8 @@ const cors = require('cors');
 
 const bodyParser = require('body-parser');
 
+const compression = require('compression');
+
 // Instantiate the express server
 const app = express();
 // Set a constant for the port that our express server will listen on
@@ -23,28 +25,41 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json());
 app.use(bodyParser.json());
 
+//compress response bodies to improve page load speeds
+app.use(compression());
+
 // Serve static files. Any requests for specific files will be served if they exist in the provided folder
+
+//THIS IS FOR THE PROXY SERVER
+app.use('/photoGallery', express.static(path.join(__dirname, '/../client/dist')));
 
 //THIS IS FOR THE INDIVIDUAL COMPONENT
 app.use('/photoGallery/:productId', express.static(path.join(__dirname, '/../client/dist')));
-
-//THIS IS FOR THE PROXY SERVER
-// app.use('/photoGallery', express.static(path.join(__dirname, '/../client/dist')));
 // app.use(express.static(path.join(__dirname, '../client/dist')));
-
-
 
 
 //gets all items within database
 app.get('/items', (req, res) => {
-  getAll((data) => {
-    res.send(data);
+  getAll((err, data) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      if (!res.getHeader('Cache-Control')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000')
+      }
+      res.send(data);
+    }
   })
 });
+
 //gets single item by id
 app.get('/photoGallery/items/:productId', (req, res) => {
   findItemById(req.params.productId, (data) => {
-    res.send(data);
+      if (!res.getHeader('Cache-Control')) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000')
+      }
+      res.send(data);
+  // }
   })
 });
 
