@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable quotes */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -16,25 +19,23 @@ const Image = styled.img`
   align-items: center;
   object-fit: contain;
   z-index: 1;
-  border: ${props => (props.id === props.clickedId ? `3px solid black` : `3px solid white`)};
+  border: ${(props) => (props.id === props.clickedId ? `3px solid black` : `3px solid white`)};
   &:hover {
-    border: ${props => (props.id === props.clickedId ? `3px solid black` : `3px solid lightgray`)}
+    border: ${(props) => (props.id === props.clickedId ? `3px solid black` : `3px solid lightgray`)}
   };
   `;
 
-const CarouselPhoto = (props) => {
-  return (
-    <Wrapper>
-      <Image
-        src={props.photo}
-        id={props.id}
-        onClick={props.changeMainPhoto}
-        onMouseOver={props.handleOnHover}
-        onMouseLeave={props.handleOffHover}
-        clickedId={props.clickedId}
-      />
-    </Wrapper>
-  )
-}
+const CarouselPhoto = (props) => (
+  <Wrapper>
+    <Image
+      src={props.photo}
+      id={props.id}
+      onClick={props.changeMainPhoto}
+      onMouseOver={props.handleOnHover}
+      onMouseLeave={props.handleOffHover}
+      clickedId={props.clickedId}
+    />
+  </Wrapper>
+);
 
 export default CarouselPhoto;

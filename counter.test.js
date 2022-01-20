@@ -1,5 +1,5 @@
 //import dependencies
-import React from 'react';
+// import React from 'react';
 import Counter from './counter';
 
 //shallow function of enzyme: doesn't fully render element to dom, instead it becomes a json object of what would have been rendered

@@ -1,3 +1,7 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable radix */
+/* eslint-disable import/extensions */
 import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -55,7 +59,6 @@ const CarouselContainer = styled.div`
   justify-content: space-between;
 `;
 
-
 class PhotoGalleryApp extends React.Component {
   constructor(props) {
     super(props);
@@ -77,61 +80,62 @@ class PhotoGalleryApp extends React.Component {
     this.handleOnHover = this.handleOnHover.bind(this);
     this.handleOffHover = this.handleOffHover.bind(this);
     this.moveBackFunc = this.moveBackFunc.bind(this);
-    this.moveForwardFunc= this.moveForwardFunc.bind(this);
+    this.moveForwardFunc = this.moveForwardFunc.bind(this);
     this.openModal = this.openModal.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
-
   }
 
+  componentDidMount() {
+    this.getItemPhotos();
+  }
 
   getItemPhotos() {
-
-    let path = window.location.pathname;
-    let id = path.split('/').filter(ele => ele !== '').pop();
+    const path = window.location.pathname;
+    const id = path.split('/').filter((ele) => ele !== '').pop();
     axios.get(`/photoGallery/items/${id}`)
       .then((response) => {
         console.log('res data: ', response.data);
-        var photoHRArr = response.data[0].highRes;
-        var photoLRArr = response.data[0].lowRes;
+        const photoHRArr = response.data[0].highRes;
+        const photoLRArr = response.data[0].lowRes;
         this.setState({
           photos: photoHRArr,
           thumbnails: photoLRArr,
           mainPhoto: photoHRArr[0],
           itemTitle: response.data[0].itemName,
           carouselLength: photoHRArr.length,
-        })
+        });
       })
       .catch((error) => {
         console.log('Failed axios.get Client-Side: ', error);
-      })
+      });
   }
 
   changeMainPhoto(event) {
-    var id = parseInt(event.target.id);
+    const id = parseInt(event.target.id);
     this.setState({
       mainPhoto: event.target.src,
-      clickedId: id
+      clickedId: id,
     });
   }
 
   handleOnHover(event) {
     this.setState({
       tempMainPhoto: event.target.src,
-      slideNum: event.target.id
+      slideNum: event.target.id,
     });
   }
 
   handleOffHover() {
-    var defaultSlide = this.state.clickedId;
+    const defaultSlide = this.state.clickedId;
     this.setState({
       tempMainPhoto: '',
-      slideNum: defaultSlide
+      slideNum: defaultSlide,
     });
   }
 
   moveBackFunc() {
     if (this.state.pageNum > 0) {
-      var newPageNum = this.state.pageNum - 1;
+      const newPageNum = this.state.pageNum - 1;
       this.setState({
         pageNum: newPageNum,
       });
@@ -139,9 +143,9 @@ class PhotoGalleryApp extends React.Component {
   }
 
   moveForwardFunc() {
-    var pageMax = Math.ceil(this.state.carouselLength / 3);
+    const pageMax = Math.ceil(this.state.carouselLength / 3);
     if (this.state.pageNum < pageMax - 1) {
-      var newPageNum = this.state.pageNum + 1;
+      const newPageNum = this.state.pageNum + 1;
       this.setState({
         pageNum: newPageNum,
       });
@@ -149,18 +153,13 @@ class PhotoGalleryApp extends React.Component {
   }
 
   openModal() {
-    this.setState({modalOpen: true});
+    this.setState({ modalOpen: true });
   }
 
   toggleModal() {
     const currModalState = this.state.modalOpen;
     this.setState({ modalOpen: !currModalState });
   }
-
-  componentDidMount() {
-    this.getItemPhotos();
-  }
-
 
   render() {
     return (
@@ -225,7 +224,7 @@ class PhotoGalleryApp extends React.Component {
           </PhotoGallery>
         </div>
       </div>
-    )
+    );
   }
 }
 

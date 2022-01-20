@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const Arrow = styled.button`
   height: 68px;
   min-width: 18px;
@@ -9,7 +8,7 @@ const Arrow = styled.button`
   cursor: pointer;
   background-color: transparent;
   border: none;
-  opacity: ${props => (props.pageMax !== props.pageNum ? `1` : `0.2`)};
+  opacity: ${(props) => (props.pageMax !== props.pageNum ? `1` : `0.2`)};
   `;
 
 const Svg = styled.svg`

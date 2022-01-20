@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable import/extensions */
 import React from 'react';
 import styled from 'styled-components';
 
@@ -14,7 +17,7 @@ const CarouselContainer = styled.div`
   overflow: hidden;
   `;
 
-  const CarouselTrack = styled.div`
+const CarouselTrack = styled.div`
   height: 68px;
   width: 252px;
   display: flex;
@@ -26,27 +29,26 @@ const CarouselContainer = styled.div`
   transform: ${(props) => `translateX(${(-246 * props.pageNum)}px)`};
   `;
 
-
 const Carousel = (props) => (
-  <CarouselContainer >
+  <CarouselContainer>
     <CarouselTrack pageNum={props.pageNum}>
-    {props.photos.map((photo, index) =>
-      <CarouselPhoto
-        photo={photo}
-        mainPhoto={props.mainPhoto}
-        id={index}
-        tempMainPhoto={props.tempMainPhoto}
-        mainPhotoEqualsThumbnail={props.mainPhoto === photo}
-        changeMainPhoto={props.changeMainPhoto}
-        handleOnHover={props.handleOnHover}
-        handleOffHover={props.handleOffHover}
-        clickedId={props.clickedId}
-        key={photo}
-      />
-    )}
+      {props.photos.map((photo, index) => (
+        <CarouselPhoto
+          photo={photo}
+          mainPhoto={props.mainPhoto}
+          id={index}
+          tempMainPhoto={props.tempMainPhoto}
+          mainPhotoEqualsThumbnail={props.mainPhoto === photo}
+          changeMainPhoto={props.changeMainPhoto}
+          handleOnHover={props.handleOnHover}
+          handleOffHover={props.handleOffHover}
+          clickedId={props.clickedId}
+          key={photo}
+        />
+      ))}
     </CarouselTrack>
   </CarouselContainer>
 
-)
+);
 
 export default Carousel;
