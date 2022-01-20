@@ -1,6 +1,6 @@
 # photo_gallery
 
-I created a photo gallery component that allows a user to view the various images of a product, orgainzed within an image carousel. Users are able to flip through images by either clicking the arrows located on either side of the larger photo, or by clicking on the actual thumbnail image located within the carousel below the larger image. Users are also able to pop out a modal that contians an enlarged version of the photo gallery (main image and thumbnail carousel) for easier viewing. THis modal functions similarly to the embeded component, with the navigation between images being the same.
+I created a photo gallery component that allows a user to view the various images of a product, orgainzed within an image carousel. Users are able to flip through images by either clicking the arrows located on either side of the larger photo, or by clicking on the actual thumbnail image located within the carousel below the larger image. Users are also able to pop out a modal that contains an enlarged version of the photo gallery (main image and thumbnail carousel) for easier viewing. THis modal functions similarly to the embeded component, with the navigation between images being the same.
 
 A demo of this component working in tandem with the other components can be viewed within the first 20 seconds here: [https://www.youtube.com/watch?v=Sfq6f7MG-Sg](https://www.youtube.com/watch?v=Sfq6f7MG-Sg)
 
