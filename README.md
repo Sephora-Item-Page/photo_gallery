@@ -4,7 +4,7 @@ I created a photo gallery component that allows a user to view the various image
 
 A demo of this component working in tandem with the other components can be viewed within the first 20 seconds here: [https://www.youtube.com/watch?v=Sfq6f7MG-Sg](https://www.youtube.com/watch?v=Sfq6f7MG-Sg)
 
-This component is deployed and can be viewed here: [http://www.beautycartphotogallery.de/photoGallery/0100/]
+This component is deployed and can be viewed here: http://www.beautycartphotogallery.de/photoGallery/0100/
 
 This photo_gallery and ProxyJay are the microservices that I created. Beauty Cart is a single page web application that I worked with 2 other engineers on.
 
